@@ -22,7 +22,7 @@ public class JsonPlaceHolderValidationTests extends BasePlaceHolder {
 
     @Test
     void postSchemaValidation() {
-        
+
         String payload = """
             { "title": "foo", "body": "bar", "userId": 1 }
             """;
