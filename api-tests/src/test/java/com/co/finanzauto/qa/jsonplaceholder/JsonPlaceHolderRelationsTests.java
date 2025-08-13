@@ -1,6 +1,7 @@
 package com.co.finanzauto.qa.jsonplaceholder;
 
 import com.co.finanzauto.qa.base.BasePlaceHolder;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -9,6 +10,8 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.everyItem;
 
 public class JsonPlaceHolderRelationsTests extends BasePlaceHolder {
+
+    @DisplayName("Verifica que los comentarios pertenecen al post")
     @Test
     void commentsXPostId() {
         int postId = 1;
@@ -21,6 +24,7 @@ public class JsonPlaceHolderRelationsTests extends BasePlaceHolder {
                 .body(matchesJsonSchemaInClasspath("schemas/comments_schema.json"));
     }
 
+    @DisplayName("Verifica que los posts pertenecen al usuario")
     @Test
     void postsXUserId() {
         int userId = 1;

@@ -1,6 +1,7 @@
 package com.co.finanzauto.qa.jsonplaceholder;
 
 import com.co.finanzauto.qa.base.BasePlaceHolder;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -9,6 +10,7 @@ import static org.hamcrest.Matchers.lessThan;
 
 public class JsonPlaceHolderValidationTests extends BasePlaceHolder {
 
+    @DisplayName("Validación del esquema de respuesta de todos los posts")
     @Test
     void getAllPosts_schema() {
         given()
@@ -20,6 +22,7 @@ public class JsonPlaceHolderValidationTests extends BasePlaceHolder {
                 .body(matchesJsonSchemaInClasspath("schemas/posts_schema.json"));
     }
 
+    @DisplayName("Validación del esquema de respuesta al crear un post")
     @Test
     void postSchemaValidation() {
 

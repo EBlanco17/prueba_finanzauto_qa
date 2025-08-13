@@ -7,8 +7,11 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.Matchers.is;
 
+import org.junit.jupiter.api.DisplayName;
+
 public class JsonPlaceHolderCRUDTests extends BasePlaceHolder {
 
+    @DisplayName("Se verifica que se obtienen todos los posts")
     @Test
     void getPosts() {
         given()
@@ -19,6 +22,7 @@ public class JsonPlaceHolderCRUDTests extends BasePlaceHolder {
                 .body("size()", is(100));
     }
 
+    @DisplayName("Se verifica que se obtiene un post por ID")
     @Test
     void getPostById() {
         given()
@@ -29,6 +33,7 @@ public class JsonPlaceHolderCRUDTests extends BasePlaceHolder {
                 .body("id", notNullValue());
     }
 
+    @DisplayName("Se verifica que se crea un nuevo post")
     @Test
     void createPost() {
         String payload = """
@@ -45,6 +50,7 @@ public class JsonPlaceHolderCRUDTests extends BasePlaceHolder {
                 .body("id", notNullValue());
     }
 
+    @DisplayName("Se verifica que se actualiza un post existente")
     @Test
     void putPost() {
         String payload = """
@@ -62,6 +68,7 @@ public class JsonPlaceHolderCRUDTests extends BasePlaceHolder {
                 .body("body", equalTo("content updated"));
     }
 
+    @DisplayName("Se verifica que se actualiza parcialmente un post existente")
     @Test
     void patchPost() {
         String payload = """
@@ -78,7 +85,7 @@ public class JsonPlaceHolderCRUDTests extends BasePlaceHolder {
                 .body("title", equalTo("partially updated"));
     }
 
-
+    @DisplayName("Se verifica que se elimina un post existente")
     @Test
     void deletePost() {
         given()
