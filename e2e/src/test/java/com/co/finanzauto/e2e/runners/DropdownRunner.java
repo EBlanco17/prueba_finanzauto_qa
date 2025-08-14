@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "com.co.finanzauto.e2e.definitions",
-        tags = "@Checkboxes",
+        tags = "@Dropdown",
         snippets = CucumberOptions.SnippetType.CAMELCASE
 )
-public class CheckboxesRunner {
+public class DropdownRunner {
 }
