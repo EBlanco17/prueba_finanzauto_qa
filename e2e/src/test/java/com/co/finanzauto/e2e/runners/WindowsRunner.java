@@ -9,8 +9,9 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com.co.finanzauto.e2e.definitions",
         plugin = {"pretty"},
-        tags = "@Upload",
+        tags = "@Windows",
         snippets = CucumberOptions.SnippetType.CAMELCASE
+
 )
-public class UploadRunner {
+public class WindowsRunner {
 }

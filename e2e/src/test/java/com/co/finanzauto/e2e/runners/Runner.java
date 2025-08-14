@@ -9,7 +9,8 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com.co.finanzauto.e2e.definitions",
         plugin = {"pretty"},
-        tags = "@Suite"
+        tags = "@Suite",
+        snippets = CucumberOptions.SnippetType.CAMELCASE
 )
 public class Runner {
 }

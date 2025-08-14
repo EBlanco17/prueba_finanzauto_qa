@@ -8,7 +8,9 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com.co.finanzauto.e2e.definitions",
         plugin = {"pretty"},
-        tags = "@Download"
+        tags = "@Download",
+        snippets = CucumberOptions.SnippetType.CAMELCASE
+
 )
 public class DownloadRunner {
 }
