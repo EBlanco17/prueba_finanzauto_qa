@@ -1,0 +1,8 @@
+target
+Downloads
+results
+reports_api
+reports_e2e
+results_performance
+*.log
+*.tmp

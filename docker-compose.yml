@@ -1,0 +1,48 @@
+services:
+  api-tests:
+    build:
+      context: .
+      dockerfile: java-maven-edge.Dockerfile
+    working_dir: /app/api
+    volumes:
+      - ./api:/app/api
+      - ./reports/api:/app/api/target/reports
+    command: >
+      sh -c "mvn clean test &&
+             mvn surefire-report:report"
+    restart: "no"
+
+  e2e-tests:
+    build:
+      context: .
+      dockerfile: java-maven-edge.Dockerfile
+    working_dir: /app/e2e
+    volumes:
+      - ./e2e:/app/e2e
+      - ./reports/e2e:/app/e2e/target/site/serenity
+      - ./downloads:/root/Downloads
+    command: >
+      sh -c "mvn clean verify &&
+             mvn serenity:aggregate"
+    depends_on:
+      api-tests:
+        condition: service_completed_successfully
+    restart: "no"
+
+  perf-tests:
+    image: grafana/k6:latest
+    working_dir: /app/performance
+    volumes:
+      - ./performance:/app/performance
+      - ./reports/performance/json:/app/performance/results/json
+      - ./reports/performance/sites:/app/performance/results/sites
+    command: >
+      sh -c "k6 run scripts/petstore.js --out json=results/json/petstore.json"
+    depends_on:
+      e2e-tests:
+        condition: service_completed_successfully
+    restart: "no"
+
+volumes:
+  downloads:
+  reports:
