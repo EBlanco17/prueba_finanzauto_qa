@@ -35,7 +35,7 @@ git clone https://github.com/EBlanco17/prueba_finanzauto_qa
 - Windows 11 pro
 - IntelliJ IDEA 2024.2
 - Visual Studio Code
-- ## GitHub Copilot
+- GitHub Copilot
 
 ## ⚠️ Mas información de cada proyecto, en los diferentes READMES de cada uno.
 
